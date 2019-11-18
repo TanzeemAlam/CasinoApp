@@ -1,0 +1,40 @@
+#div{
+    background-color: green;
+    height: 80px;
+}
+#h1{
+    float: left;
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 40px;
+    color: white;
+}
+#field{
+    float: right;
+    width: 20%;
+    height: 60px;
+    background-color: white;
+}
+#div1{
+    padding-right: 100px;
+}
+#name{
+    padding-top: 5px;
+    padding-left:5px ;
+    font-size: 12px;
+}
+#balance{
+    font-size: 12px;
+    padding-left:5px ;
+}
+#button{
+    float: right;
+    font-size: 15px;
+    padding-right: 20px;
+    padding-left: 20px;
+    background-color: white;
+}
+#div2{
+    padding-top: 15px;
+    padding-right: 10px;
+}

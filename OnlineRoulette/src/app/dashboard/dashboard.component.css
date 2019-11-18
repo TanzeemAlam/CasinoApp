@@ -1,0 +1,61 @@
+#img{
+    padding-top: 20px;
+    padding-left: 27%;
+    width: 70%;
+}
+.label{
+    font-size: 20px;
+    padding-left: 100px;
+    padding-right: 5px;
+}
+#row2col1{
+    padding-left: 142px;
+}
+#row2col3{
+    padding-left: 86px;
+}
+#row3col1{
+    padding-left: 111px;
+}
+#row3col2{
+    padding-left: 123px;
+}
+#buttondiv{
+
+    padding-right: 221px;
+    float: right;
+}
+#button{
+    padding-left: 76px;
+    padding-right: 76px;
+    background-color: green;
+    color: white;
+}
+#fieldBox{
+    border: 1px solid black;
+}
+#form{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#myModal{
+    padding-top: 15%; 
+}
+.modal-dialog{
+    width: 60%;
+}
+#sureButton{
+    background-color: lightblue;
+    color: white;
+}
+#noButton{
+    background-color: white;
+    
+}
+#childModal{
+    padding-top: 15%;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+   opacity: 1;
+}

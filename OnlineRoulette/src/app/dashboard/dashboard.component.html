@@ -1,0 +1,118 @@
+<app-header></app-header>
+<img id=img
+    src="https://image.shutterstock.com/image-vector/casino-roulette-table-illustration-green-260nw-594227630.jpg">
+
+<div>
+    <fieldset id=fieldBox>
+        <form #userlogin="ngForm" id=form>
+            <label class=label>1st 12 </label><input type="number" onkeydown="return false" name="oneto12" step=500
+                min=0 ngModel>
+            <label class=label>2nd 12 </label><input type="number" onkeydown="return false" name="twoto12" step=500
+                min=0 ngModel>
+            <label class=label>3rd 12 </label><input type="number" onkeydown="return false" name="threeto12" step=500
+                min=0 ngModel>
+            <br><br>
+            <label class=label id=row2col1>0 </label><input type="number" onkeydown="return false" name="zero" step=500
+                min=0 ngModel>
+            <label class=label>1 to 18 </label><input type="number" onkeydown="return false" name="oneto18" step=500
+                min=0 ngModel>
+            <label class=label id=row2col3>19 to 36 </label><input type="number" onkeydown="return false"
+                name="nineteento36" step=500 min=0 ngModel>
+            <br><br>
+            <label class=label id=row3col1>Even </label><input type="number" onkeydown="return false" name="even"
+                step=500 min=0 ngModel>
+            <label class=label id=row3col2>Odd </label><input type="number" onkeydown="return false" name="odd" step=500
+                min=0 ngModel>
+            <div id=buttondiv>
+                <input type=button value="Play" id=button (click)="onClickSubmit(userlogin.value)" data-toggle="modal"
+                    data-target="#myModal">
+                <div class="modal fade" id="myModal" data-backdrop="false">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div *ngIf="!noOfInputs " class="modal-header">
+                                <h4 class="modal-title">Try your luck</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div *ngIf="noOfInputs " class="modal-header">
+                                <h4 class="modal-title">Error</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div *ngIf="!noOfInputs " class="modal-body">
+                                Are you sure you want to try your luck with current selection?
+                            </div>
+                            <div *ngIf="noOfInputs" class="modal-body">
+                                Something went wrong.<br>
+                                Check your inputs!!!
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer" *ngIf="!noOfInputs ">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="sure()"
+                                    data-toggle="modal" data-target="#childModal">
+                                    Sure
+                                </button>
+                            </div>
+                            <div class="modal-footer" *ngIf="noOfInputs">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-warning" data-dismiss="modal"
+                                    (click)="reload()">Game Reset</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </fieldset>
+</div>
+
+<div class="modal fade" id="childModal" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div *ngIf="!insufficientAmount " class="modal-header">
+                <h4 class="modal-title">Error</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div *ngIf="insufficientAmount " class="modal-header">
+                <h4 class="modal-title" *ngIf="winningamount!=0">You Won!!</h4>
+                <h4 class="modal-title" *ngIf="winningamount==0">You Lost!!</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div *ngIf="!insufficientAmount " class="modal-body">
+                Sorry Dear !! <br>You Have Insuffucient balance for your selection...
+            </div>
+            <div *ngIf="insufficientAmount && winningamount!=0" class="modal-body">
+                The roulette no is <b>{{randomNumber}}</b>.<br>
+                YoU have won <b>{{winningamount}}</b>!!
+            </div>
+            <div *ngIf="insufficientAmount && winningamount==0" class="modal-body">
+                    The roulette no is <b>{{randomNumber}}</b>.<br>
+                    YoU have Lost <b>{{betAmount}}</b>!!
+                </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer" *ngIf="!insufficientAmount ">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="reload()">Play
+                    Again</button>
+            </div>
+            <div class="modal-footer" *ngIf="insufficientAmount">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="exit()">Exit</button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="reload()">Play
+                    Again</button>
+            </div>
+
+        </div>
+    </div>
+</div>
